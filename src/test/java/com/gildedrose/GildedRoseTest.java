@@ -75,18 +75,17 @@ class GildedRoseTest {
     @Test
     void backstagePassesIncrease1WhenMoreThan10Days() {
         GildedRose app = new GildedRose(new Item[] {
-            new Item("Backstage passes", 11,10),
+            new Item("Backstage passes", 12,10),
         });
         app.updateQuality();
-        assertThat(app.getItems().get(0).sellIn).isEqualTo(10);
         assertThat(app.getItems().get(0).quality).isEqualTo(11);
     }
 
     @Test
     void backstagePassesIncrease2When10daysOrLess() {
         GildedRose app = new GildedRose(new Item[] {
-            new Item("Backstage passes", 10,10),
-            new Item("Backstage passes", 6,10),
+            new Item("Backstage passes", 11,10),
+            new Item("Backstage passes", 7,10),
         });
         app.updateQuality();
         assertThat(app.getItems().get(0).quality).isEqualTo(12);
@@ -96,8 +95,8 @@ class GildedRoseTest {
     @Test
     void backstagePassesIncrease3When5To0days() {
         GildedRose app = new GildedRose(new Item[] {
-            new Item("Backstage passes", 5,10),
-            new Item("Backstage passes", 1,10),
+            new Item("Backstage passes", 6,10),
+            new Item("Backstage passes", 2,10),
         });
         app.updateQuality();
         assertThat(app.getItems().get(0).quality).isEqualTo(13);
